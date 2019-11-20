@@ -1,0 +1,13 @@
+---
+- include_tasks: pre.yml
+- block:
+    - include_tasks: "install.yml"
+    - include_tasks: "configure.yml"
+  when:
+    - not(sshe_verification_mode)
+
+- include_tasks: test.yml
+  when:
+    - sshe_verification_mode
+
+# vim:sw=2:ts=2:et:

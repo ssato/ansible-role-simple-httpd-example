@@ -1,0 +1,10 @@
+---
+- name: Verification
+  hosts: all
+  gather_facts: false
+  vars:
+    sshe_verification_mode: true
+  roles:
+    - ssato.simple_httpd_example
+
+# vim:sw=2:ts=2:et:

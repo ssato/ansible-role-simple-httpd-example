@@ -1,0 +1,47 @@
+---
+- name: Test variables are OK
+  assert:
+    that:
+      - sshe_verification_mode is defined
+      - sshe_verification_mode in [true, false]
+      - sshe_httpd_pkg | d(false)
+      - sshe_httpd_pkg is string
+      - sshe_httpd_service | d(false)
+      - sshe_httpd_service is string
+      - sshe_httpd_port is defined
+      - sshe_httpd_port is number
+      - sshe_httpd_configs | d(false)
+      - sshe_httpd_configs is sequence
+    fail_msg: |
+      sshe_verification_mode: {{ sshe_verification_mode | d() }}
+      sshe_httpd_pkg: {{ sshe_httpd_pkg | d() }}
+      sshe_httpd_service: {{ sshe_httpd_service | d() }}
+      sshe_httpd_port: {{ sshe_httpd_port | d() }}
+      sshe_httpd_configs: {{ sshe_httpd_configs | d() | to_nice_json }}
+
+- block:
+    - name: Compute the length of the variable, 'sshe_httpd_configs'
+      set_fact:
+        _len_sshe_httpd_configs: "{{ sshe_httpd_configs | length }}"
+
+    - name: Test the variable 'sshe_httpd_configs' has expected values
+      assert:
+        that:
+          - >-
+            {{ sshe_httpd_configs | selectattr("path", "defined")
+                                  | length == _len_sshe_httpd_configs }}
+          - >-
+            {{ sshe_httpd_configs | selectattr("path", "string")
+                                  | length == _len_sshe_httpd_configs }}
+          - >-
+            {{ sshe_httpd_configs | selectattr("pattern", "defined")
+                                  | length == _len_sshe_httpd_configs }}
+          - >-
+            {{ sshe_httpd_configs | selectattr("pattern", "string")
+                                  | length == _len_sshe_httpd_configs }}
+        fail_msg: |
+          sshe_httpd_configs: {{ sshe_httpd_configs | d() | to_nice_json }}
+  when:
+    - sshe_httpd_configs | d(false)
+
+# vim:sw=2:ts=2:et:

@@ -1,0 +1,26 @@
+---
+# .. note:: sshe is an abbreviation of 'ssato.simple_httpd_example'
+#
+# Verification mode flag:
+# - false [default]: All tasks except for verification tasks will run
+# - true: Only verification tasks will run
+sshe_verification_mode: false
+
+# www server's package name, httpd or nginx for example.
+sshe_httpd_pkg: httpd
+
+# www server's service name, same as the package name by default.
+sshe_httpd_service: "{{ sshe_httpd_pkg }}"
+
+# This will toggle the behavior of this role.
+# - If true, this role try to find targets and will be success if found.
+# - If false, this role try to find targets and will be success if NOT found.
+sshe_httpd_port: 80
+
+# www server's configuration files and (regexp) patterns in them to match.
+#
+sshe_httpd_configs:
+  - path: /etc/httpd/conf/httpd.conf
+    pattern: ServerName localhost
+
+# vim:sw=2:ts=2:et:

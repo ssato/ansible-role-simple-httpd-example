@@ -1,0 +1,32 @@
+---
+galaxy_info:
+  role_name: simple_httpd_example
+  author: Satoru SATOH
+  description: Install and setup wwww server
+  # company: Red Hat, Inc.
+
+  # yamllint disable-line rule:line-length
+  issue_tracker_url: https://github.com/ssato/ansible-role-simple-httpd-example/issues
+  license: MIT
+
+  min_ansible_version: 2.5
+
+  platforms:
+    - name: Fedora
+      versions:
+        - all
+
+    - name: EL
+      versions:
+        - 6
+        - 7
+        - 8
+
+  galaxy_tags:
+    - www
+    - httpd
+    - el
+
+dependencies: []
+
+# vim:sw=2:ts=2:et:
