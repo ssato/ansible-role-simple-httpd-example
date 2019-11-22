@@ -16,6 +16,6 @@ rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
 rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
 rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;
+rUN yum makecache && yum install -y python && yum clean all
 VOLUME [ "/sys/fs/cgroup" ]
-RUN yum makecache fast && yum install -y python && dnf clean all
 CMD ["/usr/sbin/init"]
