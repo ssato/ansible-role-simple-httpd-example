@@ -3,4 +3,4 @@
   hosts: all
   gather_facts: false
   roles:
-    - ssato.nw_test_existence_by_regex
+    - ssato.simple_httpd_example
