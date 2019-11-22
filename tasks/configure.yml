@@ -13,9 +13,11 @@
 
 # .. note:: handler is not used to simplify it
 - name: Ensure www server system service is enabled and started
-  service:
+  systemd:
     name: "{{ sshe_httpd_service }}"
     state: started
     enabled: true
+# .. todo:: Requires root mode?
+#    daemon_reload: true
 
 # vim:sw=2:ts=2:et:
