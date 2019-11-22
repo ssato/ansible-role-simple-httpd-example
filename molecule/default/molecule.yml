@@ -8,7 +8,13 @@ lint:
 # https://hub.docker.com/_/centos/
 platforms:
   - name: centos-7
-    image: centos:7
+    image: centos/systemd
+    privileged: True  # To use systemd
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    capabilities:
+      - SYS_ADMIN
+
 provisioner:
   name: ansible
   # .. todo::
@@ -25,6 +31,6 @@ scenario:
 verifier:
   name: ansible
   lint:
-    name: flake8
+    name: ansible-lint
 
 # vim:sw=2:ts=2:et:
