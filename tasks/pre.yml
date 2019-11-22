@@ -22,24 +22,29 @@
 - block:
     - name: Compute the length of the variable, 'sshe_httpd_configs'
       set_fact:
-        _len_sshe_httpd_configs: "{{ sshe_httpd_configs | length }}"
+        _len_shcs: "{{ sshe_httpd_configs | length }}"
 
     - name: Test the variable 'sshe_httpd_configs' has expected values
       assert:
         that:
           - >-
-            {{ sshe_httpd_configs | selectattr("path", "defined")
-                                  | length == _len_sshe_httpd_configs }}
+            {{ sshe_httpd_configs | selectattr("path")
+                                  | list
+                                  | length == _len_shcs | int }}
           - >-
             {{ sshe_httpd_configs | selectattr("path", "string")
-                                  | length == _len_sshe_httpd_configs }}
+                                  | list
+                                  | length == _len_shcs | int }}
           - >-
-            {{ sshe_httpd_configs | selectattr("pattern", "defined")
-                                  | length == _len_sshe_httpd_configs }}
+            {{ sshe_httpd_configs | selectattr("pattern")
+                                  | list
+                                  | length == _len_shcs | int }}
           - >-
             {{ sshe_httpd_configs | selectattr("pattern", "string")
-                                  | length == _len_sshe_httpd_configs }}
+                                  | list
+                                  | length == _len_shcs | int }}
         fail_msg: |
+          _len_shcs: {{ _len_shcs }}
           sshe_httpd_configs: {{ sshe_httpd_configs | d() | to_nice_json }}
   when:
     - sshe_httpd_configs | d(false)
