@@ -8,10 +8,22 @@
     sshe_httpd_service: >-
       {{ 'httpd' if ansible_os_family == 'RedHat' else 'apache2' }}
   tasks:
+    - name: Test if www server system service is found and active
+      command: "systemctl is-active {{ sshe_httpd_service }}"
+      ignore_errors: true
+      register: svc_is_active
+
+    - name: Test if www server system service is found and enabled
+      command: "systemctl is-enabled {{ sshe_httpd_service }}"
+      ignore_errors: true
+      register: svc_is_enabled
+
     - name: Ensure www server system service is disabled and stopped
       systemd:
         name: "{{ sshe_httpd_service }}"
         state: stopped
         enabled: false
+      when:
+        - svc_is_active.rc == 0 or svc_is_enabled == 0
 
 # vim:sw=2:ts=2:et:
