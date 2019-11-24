@@ -6,6 +6,7 @@
       {{ sshe_httpd_configs.0.path }}
     line: >-
       Listen {{ sshe_httpd_port }}
+    create: true
 
 - name: Ensure www server is configured as expected
   lineinfile:
