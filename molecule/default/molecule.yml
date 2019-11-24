@@ -12,12 +12,22 @@ platforms:
     # image: registry.access.redhat.com/ubi8-init:latest
     # image: ubi8-init:latest
     image: centos/systemd
-    privileged: true  # To use systemd
+
+    # .. note::
+    #    It seems that followings are not needed.
+    #    - https://github.com/projectatomic/oci-systemd-hook
+    #
+    privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     capabilities:
       - SYS_ADMIN
+    tmpfs:
+      - /run
+      - /tmp
     command: /sbin/init
+    env:
+      oci-systemd-hook: disabled
 
 provisioner:
   name: ansible
