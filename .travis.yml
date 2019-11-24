@@ -1,6 +1,8 @@
 ---
-language: python
+sudo: required
 dist: xenial
+
+language: python
 python:
   - 2.7
   - 3.7
@@ -10,12 +12,9 @@ matrix:
     - python: 3.7
       env: TOXENV=py37-ansible28
 
-services:
-  - docker
-
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install -y bash
+  - sudo apt-get install -y bash netcat grep
 
 install:
   - pip install tox-travis

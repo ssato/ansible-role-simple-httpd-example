@@ -1,0 +1,11 @@
+---
+# Configuration and health check examples
+#
+- name: Test if the given package is installed
+  command: >-
+    rpm -q {{ sshe_httpd_pkg }}
+  changed_when: false
+  tags:
+    - skip_ansible_lint
+
+# vim:sw=2:ts=2:et:

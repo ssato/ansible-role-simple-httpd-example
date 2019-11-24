@@ -23,4 +23,8 @@ sshe_httpd_configs:
   - path: /etc/httpd/conf/httpd.conf
     pattern: ServerName localhost
 
+# .. note:: Set to make it works w/o gathering facts.
+ansible_os_family: >-
+  {{ ansible_os_family | d('RedHat') }}
+
 # vim:sw=2:ts=2:et:
