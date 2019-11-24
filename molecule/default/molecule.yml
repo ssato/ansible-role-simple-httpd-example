@@ -1,33 +1,21 @@
 ---
 dependency:
   name: galaxy
-driver:
-  name: podman
+
 lint:
   name: yamllint
-# https://hub.docker.com/_/centos/
-platforms:
-  - name: centos-systemd
-    # name: ubi8-init
-    # image: registry.access.redhat.com/ubi8-init:latest
-    # image: ubi8-init:latest
-    image: centos/systemd
 
-    # .. note::
-    #    It seems that followings are not needed.
-    #    - https://github.com/projectatomic/oci-systemd-hook
-    #
-    privileged: true
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    capabilities:
-      - SYS_ADMIN
-    tmpfs:
-      - /run
-      - /tmp
-    command: /sbin/init
-    env:
-      oci-systemd-hook: disabled
+# yamllint disable-line rule:line-length
+# .. seealso:: https://molecule.readthedocs.io/en/stable/configuration.html#delegated
+driver:
+  name: delegated
+  options:
+    managed: false
+    ansible_connection_options:
+      ansible_connection: local
+
+platforms:
+  - name: instance-localhost
 
 provisioner:
   name: ansible

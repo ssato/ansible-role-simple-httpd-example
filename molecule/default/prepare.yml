@@ -1,0 +1,7 @@
+---
+- name: Preparation before running Ansible Playbook
+  hosts: all
+  gather_facts: false
+  roles: []
+
+# vim:sw=2:ts=2:et:
