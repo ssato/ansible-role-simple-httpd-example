@@ -2,13 +2,17 @@
 # .. note:: These are just example confgiurations.
 - name: "Ensure www server is listening on the port {{ sshe_httpd_port }}"
   lineinfile:
-    path: /etc/httpd/conf/httpd.conf
-    line: Listen 80
+    path: >-
+      {{ sshe_httpd_configs.0.path }}
+    line: >-
+      Listen {{ sshe_httpd_port }}
 
 - name: Ensure www server is configured as expected
   lineinfile:
-    path: /etc/httpd/conf/httpd.conf
-    line: ServerName localhost:80
+    path: >-
+      {{ sshe_httpd_configs.0.path }}
+    line: >-
+      ServerName localhost:{{ sshe_httpd_port }}
     insertafter: ^#ServerName
 
 # .. note:: handler is not used to simplify it

@@ -25,7 +25,9 @@ sshe_httpd_port: 80
 # www server's configuration files and (regexp) patterns in them to match.
 #
 sshe_httpd_configs:
-  - path: /etc/httpd/conf/httpd.conf
+  - path: >-
+      {{ '/etc/httpd/conf/httpd.conf' if os_family == 'RedHat'
+                                      else '/etc/apache2/httpd.conf' }}
     pattern: ServerName localhost
 
 # vim:sw=2:ts=2:et:
