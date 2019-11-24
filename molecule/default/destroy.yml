@@ -7,6 +7,6 @@
       systemd:
         name: "{{ sshe_httpd_service }}"
         state: stopped
-        enabled: fales
+        enabled: false
 
 # vim:sw=2:ts=2:et:
