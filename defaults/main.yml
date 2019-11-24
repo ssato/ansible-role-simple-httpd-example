@@ -1,4 +1,8 @@
 ---
+# .. note:: Set to make it works w/o gathering facts.
+ansible_os_family: >-
+  {{ ansible_os_family | d('RedHat') }}
+
 # .. note:: sshe is an abbreviation of 'ssato.simple_httpd_example'
 #
 # Verification mode flag:
@@ -7,7 +11,8 @@
 sshe_verification_mode: false
 
 # www server's package name, httpd or nginx for example.
-sshe_httpd_pkg: httpd
+sshe_httpd_pkg: >-
+  {{ 'httpd' if ansible_os_family == 'RedHat' else 'apache2' }}
 
 # www server's service name, same as the package name by default.
 sshe_httpd_service: "{{ sshe_httpd_pkg }}"
@@ -22,9 +27,5 @@ sshe_httpd_port: 80
 sshe_httpd_configs:
   - path: /etc/httpd/conf/httpd.conf
     pattern: ServerName localhost
-
-# .. note:: Set to make it works w/o gathering facts.
-ansible_os_family: >-
-  {{ ansible_os_family | d('RedHat') }}
 
 # vim:sw=2:ts=2:et:
