@@ -4,6 +4,7 @@
 #   - bats: https://github.com/sstephenson/bats
 #
 function setup () {
+    export INVENTORY=${1:-hosts.yml}
     cd $BATS_TEST_DIRNAME
 }
 
@@ -24,6 +25,26 @@ EOM
 
 @test "Check styles of all playbook files" {
     run ansible-lint playbook.yml
+    check_results
+}
+
+@test "Test applying the role" {
+    run ansible-playbook -v -i ${INVENTORY} prepare.yml
+    check_results
+
+    run ansible-playbook -v -i ${INVENTORY} create.yml
+    check_results
+
+    run ansible-playbook -v -i ${INVENTORY} playbook.yml
+    check_results
+}
+
+@test "Test verifying the reusult of the role" {
+    run ansible-playbook -v -i ${INVENTORY} playbook.yml -e @res/verify_params.yml
+    check_results
+
+    run ansible-playbook -v -i ${INVENTORY} destroy.yml \
+        -e @roles/ssato.simple_httpd_example/defaults/main.yml
     check_results
 }
 
