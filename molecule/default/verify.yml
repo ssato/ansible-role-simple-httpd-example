@@ -1,7 +1,7 @@
 ---
 - name: Verification
   hosts: all
-  gather_facts: false
+  gather_facts: true
   vars:
     sshe_verification_mode: true
   roles:
