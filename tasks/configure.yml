@@ -22,7 +22,6 @@
     name: "{{ sshe_httpd_service }}"
     state: started
     enabled: true
-# .. todo:: Requires root mode?
-#    daemon_reload: true
+    # daemon_reload: true
 
 # vim:sw=2:ts=2:et:

@@ -43,7 +43,7 @@ EOM
     run ansible-playbook -v -i ${INVENTORY} playbook.yml -e @res/verify_params.yml
     check_results
 
-    run ansible-playbook -v -i ${INVENTORY} destroy.yml \
+    run ansible-playbook -v -i ${INVENTORY} cleanup.yml \
         -e @roles/ssato.simple_httpd_example/defaults/main.yml
     check_results
 }
