@@ -1,0 +1,10 @@
+ssato@x1-carbon-gen6% ./tests/tests.bats         ~/repos/public/github.com/ssato/ansible-role-simple-httpd-example.git
+ ✓ Lint all yaml files
+ ✓ Check styles of all playbook files
+ ✓ Test applying the role
+ ✓ Test verifying the reusult of the role
+
+4 tests, 0 failures
+ssato@x1-carbon-gen6% cat /etc/fedora-release    ~/repos/public/github.com/ssato/ansible-role-simple-httpd-example.git
+Fedora release 31 (Thirty One)
+ssato@x1-carbon-gen6%                            ~/repos/public/github.com/ssato/ansible-role-simple-httpd-example.git
