@@ -1,6 +1,6 @@
 ---
 # .. note:: Set to make it works w/o gathering facts.
-ansible_os_family: >-
+os_family: >-
   {{ ansible_os_family | d('RedHat') }}
 
 # .. note:: sshe is an abbreviation of 'ssato.simple_httpd_example'
@@ -12,7 +12,7 @@ sshe_verification_mode: false
 
 # www server's package name, httpd or nginx for example.
 sshe_httpd_pkg: >-
-  {{ 'httpd' if ansible_os_family == 'RedHat' else 'apache2' }}
+  {{ 'httpd' if os_family == 'RedHat' else 'apache2' }}
 
 # www server's service name, same as the package name by default.
 sshe_httpd_service: "{{ sshe_httpd_pkg }}"

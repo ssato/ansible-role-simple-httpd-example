@@ -22,9 +22,9 @@
 - name: Test if the OS running in the target is supported one
   assert:
     that:
-      - ansible_os_family in ['RedHat', 'Debian']
+      - os_family in ['RedHat', 'Debian']
     fail_msg: |
-      ansible_os_family: {{ ansible_os_family }}
+      os_family: {{ os_family }}
   when:
     - sshe_verification_mode
 
