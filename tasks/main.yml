@@ -6,7 +6,9 @@
   when:
     - not(sshe_verification_mode)
 
-- include_tasks: test.yml
+- block:
+    - include_tasks: "test_{{ ansible_os_family }}.yml"
+    - include_tasks: test.yml
   when:
     - sshe_verification_mode
 

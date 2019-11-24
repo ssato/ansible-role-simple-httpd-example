@@ -1,0 +1,9 @@
+---
+- name: Test if the given package is installed
+  command: >-
+    dpkg --status {{ sshe_httpd_pkg }}
+  changed_when: false
+  tags:
+    - skip_ansible_lint
+
+# vim:sw=2:ts=2:et:
