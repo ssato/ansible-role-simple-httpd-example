@@ -2,6 +2,11 @@
 - name: Destroy the instance for testing
   hosts: all
   gather_facts: false
-  roles: []
+  tasks:
+    - name: Ensure www server system service is disabled and stopped
+      systemd:
+        name: "{{ sshe_httpd_service }}"
+        state: stopped
+        enabled: fales
 
 # vim:sw=2:ts=2:et:
