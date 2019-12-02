@@ -8,7 +8,7 @@ test py37: &default_def
     TOXENV: py37
   before_script:
     - apt-get -qq update
-    - apt-get install -y bash netcat grep
+    - apt-get install -y bash netcat grep tox python3-pip
   script:
     - tox
 
@@ -17,5 +17,8 @@ test py27:
   image: python:2.7-buster
   variables:
     TOXENV: py27
+  before_script:
+    - apt-get -qq update
+    - apt-get install -y bash netcat grep tox python-pip
 
 # vim:sw=2:ts=2:et:
