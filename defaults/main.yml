@@ -17,9 +17,7 @@ sshe_httpd_pkg: >-
 # www server's service name, same as the package name by default.
 sshe_httpd_service: "{{ sshe_httpd_pkg }}"
 
-# This will toggle the behavior of this role.
-# - If true, this role try to find targets and will be success if found.
-# - If false, this role try to find targets and will be success if NOT found.
+# HTTP listening port of the wwww server
 sshe_httpd_port: 80
 
 # www server's configuration files and (regexp) patterns in them to match.

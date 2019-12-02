@@ -28,24 +28,22 @@ Requirements
 Role Variables
 ================
 
-Variables should be customized for your use cases.
+Variables may be customized as needed.
 
-- rntebr_mode: 'dump' or 'dryrun' or other string including 'normal'
+- sshe_verification_mode: Verification mode flag,
 
-  - Set to 'dump' if you want dump the output of results of command run
-  - Set to 'dryrun' if you just want to test regex pattern matches w/ reference
-    data was given. (You need to prepare the reference data by yourself.)
-  - Set to other string including 'normal' if you want to run command and test
-    existence of target objects by finding regex matches given
+  - false [default]: All tasks except for verification tasks will run
+  - true: Only verification tasks will run
 
-- rntebr_targets_patterns: Regex patterns to search for target objects from
-  outputs as a result of command run
-
-- rntebr_res: Set to some results on 'dryrun' mode
-- rntebr_dump_path: output file path on 'dump' mode
-- rntebr_command: command to run on target network nodes on !'dryrun' mode
+- sshe_httpd_pkg: www server package name ['httpd' or 'apache2']
+- sshe_httpd_service: system service name of the www server [same as sshe_httpd_pkg]
+- sshe_httpd_port: HTTP Listening port
+- sshe_httpd_configs: A list of {'path':, 'pattern': } denotes configuration
+  file path and configuration string pattern to search
 
 Other variables should not needed to be customized for most cases.
+
+- os_family: (Linux) OS family name [ansible_os_family or 'RedHat']
 
 see also defaults/main.yml for default definitions of each variables and tests/files/\*_evars_\*.yml for .
 
