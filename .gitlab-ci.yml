@@ -7,8 +7,8 @@ test py37: &default_def
   variables:
     TOXENV: py37
   before_script:
-    - sudo apt-get -qq update
-    - sudo apt-get install -y bash netcat grep
+    - apt-get -qq update
+    - apt-get install -y bash netcat grep
   script:
     - tox
 
