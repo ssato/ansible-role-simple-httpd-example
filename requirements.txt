@@ -1,7 +1,1 @@
 ansible
-ansible-lint
-# .. todo:: podman, https://github.com/containers/python-podman
-#docker
-#podman
-molecule
-yamllint

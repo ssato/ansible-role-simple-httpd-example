@@ -1,0 +1,11 @@
+# python:
+coveralls
+flake8
+nose
+pycodestyle
+pylint
+
+# ansible:
+ansible-lint
+molecule
+yamllint
