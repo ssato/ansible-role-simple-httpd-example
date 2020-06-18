@@ -32,18 +32,18 @@ EOM
     run ansible-playbook -v -i ${INVENTORY} prepare.yml
     check_results
 
-    run ansible-playbook -v -i ${INVENTORY} create.yml
+    run ansible-playbook -v -i ${INVENTORY} converge.yml
     check_results
 
-    run ansible-playbook -v -i ${INVENTORY} playbook.yml
+    run ansible-playbook -v -i ${INVENTORY} verify.yml
     check_results
 }
 
 @test "Test verifying the reusult of the role" {
-    run ansible-playbook -v -i ${INVENTORY} playbook.yml -e @res/verify_params.yml
+    run ansible-playbook -v -i ${INVENTORY} converge.yml -e @res/verify_params.yml
     check_results
 
-    run ansible-playbook -v -i ${INVENTORY} cleanup.yml \
+    run ansible-playbook -v -i ${INVENTORY} verify.yml \
         -e @roles/ssato.simple_httpd_example/defaults/main.yml
     check_results
 }
