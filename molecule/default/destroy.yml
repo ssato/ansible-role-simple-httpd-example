@@ -1,0 +1,7 @@
+---
+- name: Destroy
+  hosts: all
+  gather_facts: false
+  tasks: []
+
+# vim:sw=2:ts=2:et:

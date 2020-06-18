@@ -1,0 +1,6 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: true
+  roles:
+    - ssato.simple_httpd_example

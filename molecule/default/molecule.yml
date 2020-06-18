@@ -1,0 +1,27 @@
+---
+dependency:
+  name: galaxy
+lint: |
+  set -e
+  yamllint -c molecule/podman/yamllint.cfg .
+  ansible-lint .
+driver:
+  name: delegated
+  options:
+    managed: false
+    ansible_connection_options:
+      ansible_connection: local
+platforms:
+  - name: instance-localhost
+provisioner:
+  name: ansible
+  options:
+    vv: true
+  inventory:
+    group_vars:
+      all:
+        sshe_verification_mode: false
+verifier:
+  name: ansible
+
+# vim:sw=2:ts=2:et:
