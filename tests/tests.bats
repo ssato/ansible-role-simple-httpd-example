@@ -18,6 +18,11 @@ EOM
     }
 }
 
+function skip_if_user_is_not_root () {
+    idu=$(id -u)
+    [[ ${idu} == "0" ]] || skip "Running user is Not root."
+}
+
 @test "Lint all yaml files" {
     run yamllint --strict .
     check_results
@@ -29,6 +34,8 @@ EOM
 }
 
 @test "Test applying the role" {
+    skip_if_user_is_not_root
+
     run ansible-playbook -v -i ${INVENTORY} prepare.yml
     check_results
 
@@ -40,6 +47,8 @@ EOM
 }
 
 @test "Test verifying the reusult of the role" {
+    skip_if_user_is_not_root
+
     run ansible-playbook -v -i ${INVENTORY} converge.yml -e @res/verify_params.yml
     check_results
 
