@@ -4,6 +4,5 @@
     name: "{{ sshe_httpd_pkg }}"
     # .. note:: Avoid 'latest' because it may cause change.
     state: present
-  become: true
 
 # vim:sw=2:ts=2:et:
