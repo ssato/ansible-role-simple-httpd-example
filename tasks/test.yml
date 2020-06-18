@@ -22,6 +22,20 @@
   tags:
     - skip_ansible_lint
 
+- name: Test if a client can fetch a content
+  uri:
+    url: http://127.0.0.1:8080
+    return_content: true
+    status_code: 200
+  register: uri_res
+  delegate_to: localhost
+
+- name: Test if a client could fetch the expected content
+  assert:
+    that:
+      - uri_res.status == 200
+      - uri_res.content is search("Test Page")
+
 - name: Test if the system service is configured as expected
   command: >-
     grep -q '{{ item.pattern }}' {{ item.path }}
