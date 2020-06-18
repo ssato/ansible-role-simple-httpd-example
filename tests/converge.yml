@@ -1,1 +1,1 @@
-../molecule/default/converge.yml
+../molecule/podman/converge.yml
