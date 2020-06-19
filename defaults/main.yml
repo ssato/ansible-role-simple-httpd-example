@@ -24,8 +24,9 @@ sshe_httpd_port: 80
 #
 sshe_httpd_configs:
   - path: >-
-      {{ '/etc/httpd/conf/httpd.conf' if ansible_os_family == 'RedHat'
-                                      else '/etc/apache2/httpd.conf' }}
+      {{ '/etc/httpd/conf/httpd.conf'
+         if ansible_os_family == 'RedHat'
+         else '/etc/apache2/sites-available/000-default.conf' }}
     pattern: ServerName localhost
 
 # vim:sw=2:ts=2:et:
