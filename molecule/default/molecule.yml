@@ -17,6 +17,7 @@ provisioner:
   name: ansible
   options:
     vv: true
+    become: true
   inventory:
     group_vars:
       all:
