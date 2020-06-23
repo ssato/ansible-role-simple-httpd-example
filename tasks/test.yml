@@ -5,6 +5,8 @@
   command: >-
     systemctl is-enabled {{ sshe_httpd_service }}
   changed_when: false
+  register: _res
+  failed_when: _res.rc != 0
   tags:
     - skip_ansible_lint
 
@@ -12,6 +14,8 @@
   command: >-
     systemctl is-active {{ sshe_httpd_service }}
   changed_when: false
+  register: _res
+  failed_when: _res.rc != 0
   tags:
     - skip_ansible_lint
 
@@ -19,6 +23,8 @@
   command: >-
     nc -z localhost {{ sshe_httpd_port }}
   changed_when: false
+  register: _res
+  failed_when: _res.rc != 0
   tags:
     - skip_ansible_lint
 
@@ -39,6 +45,8 @@
   command: >-
     grep -q '{{ item.pattern }}' {{ item.path }}
   changed_when: false
+  register: _res
+  failed_when: _res.rc != 0
   tags:
     - skip_ansible_lint
   loop: "{{ sshe_httpd_configs }}"
