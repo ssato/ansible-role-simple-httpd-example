@@ -52,6 +52,13 @@ Example Playbook
 
 see tests/converge.yml
 
+How to test this role
+======================
+
+This ansible role contains the built-in tests, that is, you can test it by
+enabling the verfication mode (set true to the variable
+sshe_verification_mode).
+
 License
 =========
 
