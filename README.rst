@@ -50,7 +50,7 @@ see also defaults/main.yml for default definitions of each variables and tests/f
 Example Playbook
 ==================
 
-see tests/playbook.yml
+see tests/converge.yml
 
 License
 =========
