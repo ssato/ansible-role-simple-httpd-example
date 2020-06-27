@@ -6,6 +6,10 @@ ssato.simple_httpd_example role
    :target: https://travis-ci.org/ssato/ansible-role-simple-httpd-example
    :alt: [Test Status]
 
+.. image:: https://github.com/ssato/ansible-role-simple-httpd-example/workflows/Tests/badge.svg
+   :target: https://github.com/ssato/ansible-role-simple-httpd-example/actions?query=workflow%3ATests
+   :alt: [Test Status]
+
 .. .. image:: https://img.shields.io/ansible/role/<TBD>.svg
    :target: https://galaxy.ansible.com/ssato/simple_httpd_example
    :alt: [Ansible Galaxy]
