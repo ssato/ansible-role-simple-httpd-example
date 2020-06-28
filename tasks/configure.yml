@@ -1,6 +1,6 @@
 ---
 # .. note:: These are just example confgiurations.
-- name: "Ensure www server is listening on the port {{ sshe_httpd_port }}"
+- name: "Ensure www server will listen on the port {{ sshe_httpd_port }}"
   lineinfile:
     path: >-
       {{ sshe_httpd_configs.0.path }}
