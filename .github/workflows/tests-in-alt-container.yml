@@ -14,7 +14,7 @@ jobs:
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
       ports:
         - 80
-      options: --tmpfs /run --tmpfs /tmp --init
+      options: --tmpfs /run --tmpfs /tmp --entrypoint /usr/sbin/init
     env:
       TOXENV: py36
 
