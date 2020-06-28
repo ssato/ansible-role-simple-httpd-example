@@ -17,6 +17,7 @@ jobs:
       options: --tmpfs /run --tmpfs /tmp --entrypoint /usr/sbin/init
     env:
       TOXENV: py36
+      SHELL: /sbin/init
 
     steps:
       - uses: actions/checkout@v1
