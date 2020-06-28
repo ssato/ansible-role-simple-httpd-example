@@ -1,0 +1,17 @@
+---
+- name: Prepare
+  hosts: all
+  gather_facts: false
+  vars:
+    # https://hub.docker.com/r/pycontribs/centos/dockerfile
+    pkgs:
+      # - python3
+      # - python3-devel
+      - nmap-ncat
+      - bats
+  tasks:
+    - name: ensure necessary packages for testing are installed
+      apt:
+        pkg: "{{ pkgs }}"
+
+# vim:sw=2:ts=2:et:
