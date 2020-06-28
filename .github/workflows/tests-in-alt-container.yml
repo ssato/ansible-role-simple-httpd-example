@@ -15,7 +15,6 @@ jobs:
       ports:
         - 80
       options: --tmpfs /run --tmpfs /tmp
-      
     env:
       TOXENV: py36
 
