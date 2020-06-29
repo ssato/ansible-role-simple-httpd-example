@@ -16,9 +16,9 @@ ssato.simple_httpd_example role
 
 An ansible role to show how to do Ansible Role CI using the following tools.
 
-- molecule (https://molecule.readthedocs.io), a de facto test framework for ansible
-- ansible as a molecule's verifier
-- bash to run bats (https://github.com/sstephenson/bats) as an alternative test tool
+- molecule (https://molecule.readthedocs.io), a de facto test framework for ansible, with ansible as a molecule's verifier
+- bats (https://github.com/sstephenson/bats) to run a kind of integration tests
+- tox (https://tox.readthedocs.io) to run these commands in various environments
 
 Requirements
 ==============
