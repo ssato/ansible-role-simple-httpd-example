@@ -10,6 +10,11 @@ os_family: >-
 # - true: Only verification tasks will run
 sshe_verification_mode: false
 
+# Packages to install for verification (testing):
+sshe_verification_pkgs:
+  - >-
+    {{ 'nmap-ncat' if os_family == 'RedHat' else 'ncat' }}
+
 # www server's package name, httpd or nginx for example.
 sshe_httpd_pkg: >-
   {{ 'httpd' if os_family == 'RedHat' else 'apache2' }}

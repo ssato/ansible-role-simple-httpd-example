@@ -1,0 +1,7 @@
+---
+- name: Ensure necessary packages for testing are installed
+  package:
+    name: "{{ sshe_verification_pkgs }}"
+    state: present
+
+# vim:sw=2:ts=2:et:
