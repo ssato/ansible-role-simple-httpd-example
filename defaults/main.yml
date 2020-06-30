@@ -13,7 +13,7 @@ sshe_verification_mode: false
 # Packages to install for verification (testing):
 sshe_verification_pkgs:
   - >-
-    {{ 'nmap-ncat' if os_family == 'RedHat' else 'ncat' }}
+    {{ 'nmap-ncat' if os_family == 'RedHat' else 'nmap' }}
 
 # www server's package name, httpd or nginx for example.
 sshe_httpd_pkg: >-
