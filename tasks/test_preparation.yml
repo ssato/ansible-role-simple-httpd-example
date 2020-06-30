@@ -3,5 +3,6 @@
   package:
     name: "{{ sshe_verification_pkgs }}"
     state: present
+  become: true
 
 # vim:sw=2:ts=2:et:
