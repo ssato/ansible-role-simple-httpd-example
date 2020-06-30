@@ -7,7 +7,6 @@
     - not(sshe_verification_mode)
 
 - block:
-    - include_tasks: test_preparation.yml
     - include_tasks: "test_{{ os_family }}.yml"
     - include_tasks: test.yml
   when:
