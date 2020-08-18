@@ -19,8 +19,10 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
+
+      # yamllint disable rule:line-length
       - name: Install required debs
-        run: sudo apt-get install -y bash bats iproute2 iputils-ping
+        run: sudo apt-get install -y bash bats iproute2 iputils-ping ansible-lint yamllint
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
