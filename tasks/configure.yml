@@ -7,6 +7,7 @@
     line: >-
       Listen {{ sshe_httpd_port }}
     create: true
+    mode: preserve
 
 - name: Ensure www server is configured as expected
   lineinfile:
@@ -15,6 +16,7 @@
     line: >-
       ServerName localhost:{{ sshe_httpd_port }}
     insertafter: ^#ServerName
+    mode: preserve
 
 # .. note:: handler is not used to simplify it
 - name: Ensure www server system service is enabled and started
