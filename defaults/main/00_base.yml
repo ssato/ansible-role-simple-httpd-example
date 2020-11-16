@@ -1,0 +1,6 @@
+---
+# .. note:: Set to make it works w/o gathering facts.
+os_family: >-
+  {{ ansible_os_family | d('RedHat') }}
+
+# vim:sw=2:ts=2:et:
