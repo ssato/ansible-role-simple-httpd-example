@@ -1,0 +1,14 @@
+---
+# .. note:: sshe is an abbreviation of 'ssato.simple_httpd_example'
+#
+# Verification mode flag:
+# - false [default]: All tasks except for verification tasks will run
+# - true: Only verification tasks will run
+sshe_verification_mode: false
+
+# Packages to install for verification (testing):
+sshe_verification_pkgs:
+  - >-
+    {{ 'nmap-ncat' if os_family == 'RedHat' else 'nmap' }}
+
+# vim:sw=2:ts=2:et:
