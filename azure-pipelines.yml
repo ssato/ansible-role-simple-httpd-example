@@ -26,6 +26,9 @@ jobs:
     pool:
       vmImage: 'ubuntu-latest'
 
+    variables:
+      TOXENV: py${{ replace(variables['pythonVersion'], '.', '') }}
+
     steps:
       - task: UsePythonVersion@0
         displayName: Use Python $(pythonVersion)
