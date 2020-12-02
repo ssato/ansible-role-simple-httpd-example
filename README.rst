@@ -4,11 +4,15 @@ ssato.simple_httpd_example role
 
 .. image:: https://img.shields.io/travis/ssato/ansible-role-simple-httpd-example.png
    :target: https://travis-ci.org/ssato/ansible-role-simple-httpd-example
-   :alt: [Test Status]
+   :alt: [Travis-CI Status]
 
 .. image:: https://github.com/ssato/ansible-role-simple-httpd-example/workflows/Tests/badge.svg
    :target: https://github.com/ssato/ansible-role-simple-httpd-example/actions?query=workflow%3ATests
-   :alt: [Test Status]
+   :alt: [GitHub Actions Status]
+
+.. image:: https://dev.azure.com/satorusatoh0471/ansible-role-simple-httpd-example/_apis/build/status/ssato.ansible-role-simple-httpd-example
+   :target: https://dev.azure.com/satorusatoh0471/ansible-role-simple-httpd-example/_build/latest
+   :alt: [Azure Pipelines Status]
 
 .. .. image:: https://img.shields.io/ansible/role/<TBD>.svg
    :target: https://galaxy.ansible.com/ssato/simple_httpd_example
