@@ -11,7 +11,7 @@ ssato.simple_httpd_example role
    :alt: [GitHub Actions Status]
 
 .. image:: https://dev.azure.com/satorusatoh0471/ansible-role-simple-httpd-example/_apis/build/status/ssato.ansible-role-simple-httpd-example
-   :target: https://dev.azure.com/satorusatoh0471/ansible-role-simple-httpd-example/_build?definitionId=1
+   :target: https://dev.azure.com/satorusatoh0471/ansible-role-simple-httpd-example/_build
    :alt: [Azure Pipelines Status]
 
 .. .. image:: https://img.shields.io/ansible/role/<TBD>.svg
