@@ -26,13 +26,14 @@ jobs:
           pythonVersion: 3.9
         python36-ansible29:
           pythonVersion: 3.6
-          extras: -ansible29
+          subVer: -ansible29
 
     pool:
       vmImage: 'ubuntu-latest'
 
     variables:
-      TOXENV: py${{ replace(variables['pythonVersion'], '.', '') }}${{ variables.extras }}
+      # yamllint disable-line rule:line-length
+      TOXENV: py${{ replace(variables.pythonVersion, '.', '') }}${{ variables.subVer }}
 
     steps:
       - task: UsePythonVersion@0
@@ -49,7 +50,7 @@ jobs:
           pip install tox
         displayName: Install some more test time dependencies
 
-      - bash: tox
+      - bash: tox -e $TOXENV
         displayName: Run tests
 
 # vim:sw=2:ts=2:et:
