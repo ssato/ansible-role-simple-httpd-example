@@ -33,7 +33,7 @@ jobs:
 
     variables:
       # yamllint disable-line rule:line-length
-      TOXENV: py${{ replace(variables.pythonVersion, '.', '') }}${{ variables.subVer }}
+      TOXENV: py${{ replace(variables.pythonVersion, '.', '') }}$[variables.subVer]
 
     steps:
       - task: UsePythonVersion@0
