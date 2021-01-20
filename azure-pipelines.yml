@@ -50,7 +50,9 @@ jobs:
           pip install tox
         displayName: Install some more test time dependencies
 
-      - bash: tox -e $TOXENV
-        displayName: Run tests
+      - script: |
+          echo $(TOXENV)
+          tox -e $(TOXENV)
+        displayName: Run tests using tox
 
 # vim:sw=2:ts=2:et:
