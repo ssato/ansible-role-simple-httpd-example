@@ -26,13 +26,13 @@ jobs:
           pythonVersion: 3.9
         python36-ansible29:
           pythonVersion: 3.6
-          ansibleVersion: 29
+          extras: -ansible29
 
     pool:
       vmImage: 'ubuntu-latest'
 
     variables:
-      TOXENV: py${{ replace(variables['pythonVersion'], '.', '') }}
+      TOXENV: py${{ replace(variables['pythonVersion'], '.', '') }}${{ variables.extras }}
 
     steps:
       - task: UsePythonVersion@0
