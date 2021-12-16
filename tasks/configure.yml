@@ -8,6 +8,8 @@
       Listen {{ sshe_httpd_port }}
     create: true
     mode: 0644
+  when:
+    - os_family == 'RedHat'
 
 - name: Ensure www server is configured as expected
   lineinfile:
@@ -29,6 +31,20 @@
         daemon_reload: true
       register: __result
   rescue:
+    - name: Try to dump the configuration updateded
+      debug:
+        msg: |
+          {{ lookup('file', sshe_httpd_configs.0.path) }}
+      changed_when: false
+
+    - name: Try to get the status of the service
+      command: >-
+        systemctl status {{ sshe_httpd_service }}
+      ignore_errors: true
+      changed_when: false
+      tags:
+        - skip_ansible_lint
+
     - name: Print errors
       ansible.builtin.debug:
         var: __result
