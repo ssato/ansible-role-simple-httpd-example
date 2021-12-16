@@ -29,7 +29,10 @@ function skip_if_user_is_not_root () {
 }
 
 @test "Check styles of all playbook files" {
-    run ansible-lint playbook.yml
+    for yml in prepare.yml converge.yml verify.yml
+    do
+        run ansible-lint ${yml}
+    done
     check_results
 }
 
