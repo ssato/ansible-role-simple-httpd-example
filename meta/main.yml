@@ -1,6 +1,7 @@
 ---
 galaxy_info:
   role_name: simple_httpd_example
+  namespace: ssato
   author: Satoru SATOH
   description: Install and setup wwww server
   # company: Red Hat, Inc.
