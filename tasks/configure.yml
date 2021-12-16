@@ -19,11 +19,18 @@
     mode: 0644
 
 # .. note:: handler is not used to simplify it
-- name: Ensure www server system service is enabled and started
-  systemd:
-    name: "{{ sshe_httpd_service }}"
-    state: started
-    enabled: true
-    # daemon_reload: true
+- name: Ensure www server system service is started
+  block:
+    - name: Ensure www service system service is enabled and started
+      systemd:
+        name: "{{ sshe_httpd_service }}"
+        state: started
+        enabled: true
+        daemon_reload: true
+      register: __result
+  rescue:
+    - name: Print errors
+      ansible.builtin.debug:
+        var: __result
 
 # vim:sw=2:ts=2:et:
