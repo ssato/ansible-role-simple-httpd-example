@@ -12,7 +12,7 @@ platforms:
   - name: instance
     # https://hub.docker.com/r/centos/systemd/
     # image: centos/systemd:latest
-    image: docker.io/pycontribs/centos:8
+    image: docker.io/ssato/fedora-python-systemd:36
     pre_build_image: true
     command: /sbin/init
     # capabilities:
