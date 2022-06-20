@@ -1,5 +1,4 @@
-docker.io/pycontribs/centos:8
-n:
+# python
 coveralls
 flake8
 nose
