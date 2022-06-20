@@ -1,14 +1,21 @@
 ---
-- include_tasks: pre.yml
-- block:
-    - include_tasks: "install.yml"
-    - include_tasks: "configure.yml"
+- name: Pre checks
+  ansible.builtin.include_tasks: pre.yml
+- name: Main tasks
+  block:
+    - name: Install required software
+      ansible.builtin.include_tasks: "install.yml"
+    - name: Configure it
+      ansible.builtin.include_tasks: "configure.yml"
   when:
     - not(sshe_verification_mode)
 
-- block:
-    - include_tasks: "test_{{ os_family | lower }}.yml"
-    - include_tasks: test.yml
+- name: Test tasks
+  block:
+    - name: Run vender specific built-in tests
+      ansible.builtin.include_tasks: "test_{{ os_family | lower }}.yml"
+    - name: Run general built-in tests
+      ansible.builtin.include_tasks: test.yml
   when:
     - sshe_verification_mode
 

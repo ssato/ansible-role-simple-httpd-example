@@ -2,21 +2,23 @@
 # Configuration and health check examples
 #
 - name: Test if the system service is enabled
-  command: >-
+  ansible.builtin.command: >-
     systemctl is-enabled {{ sshe_httpd_service }}
+  register: __result
   changed_when: false
-  tags:
-    - skip_ansible_lint
+  failed_when:
+    - __result.rc != 0
 
 - name: Test if the system service is running
-  command: >-
+  ansible.builtin.command: >-
     systemctl is-active {{ sshe_httpd_service }}
+  register: __result
   changed_when: false
-  tags:
-    - skip_ansible_lint
+  failed_when:
+    - __result.rc != 0
 
 - name: Test if a client can fetch a content
-  uri:
+  ansible.builtin.uri:
     url: "http://localhost:{{ sshe_httpd_port }}/"
     return_content: true
     status_code:
@@ -24,16 +26,16 @@
       - 403
       - 404
     timeout: 5
-  register: uri_res
+  register: __result
   failed_when:
-    - not(uri_res.content)
+    - not(__result.content)
 
+# fixme:
 - name: Test if the system service is configured as expected
-  command: >-
-    grep -q '{{ item.pattern }}' {{ item.path }}
+  ansible.builtin.command: >-
+    grep -q '{{ item.block | list | first }}' {{ item.path }}
+  register: __result
   changed_when: false
-  tags:
-    - skip_ansible_lint
+  failed_when:
+    - __result.rc != 0
   loop: "{{ sshe_httpd_configs }}"
-
-# vim:sw=2:ts=2:et:

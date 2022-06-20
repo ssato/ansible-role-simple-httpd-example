@@ -1,9 +1,8 @@
 ---
 - name: Test if the given package is installed
-  command: >-
+  ansible.builtin.command: >-
     dpkg --status {{ sshe_httpd_pkg }}
+  register: __result
   changed_when: false
-  tags:
-    - skip_ansible_lint
-
-# vim:sw=2:ts=2:et:
+  failed_when:
+    - __result.rc != 0

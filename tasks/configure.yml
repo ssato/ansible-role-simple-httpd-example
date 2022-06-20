@@ -1,30 +1,23 @@
 ---
 # .. note:: These are just example confgiurations.
-- name: "Ensure www server will listen on the port {{ sshe_httpd_port }}"
-  lineinfile:
+- name: Ensure custom configurations were added as intended
+  ansible.builtin.blockinfile:
     path: >-
-      {{ sshe_httpd_configs.0.path }}
-    line: >-
-      Listen {{ sshe_httpd_port }}
-    create: true
+      {{ item.path }}
+    block: |
+      {{ item.block }}
     mode: 0644
-  when:
-    - os_family == 'RedHat'
+    create: >-
+      {{ item.create | d(false) }}
+    insertafter: >-
+      {{ item.pattern | d('EOF') }}
+  loop: "{{ sshe_httpd_configs }}"
 
-- name: Ensure www server is configured as expected
-  lineinfile:
-    path: >-
-      {{ sshe_httpd_configs.0.path }}
-    line: >-
-      ServerName localhost:{{ sshe_httpd_port }}
-    insertafter: ^#ServerName
-    mode: 0644
-
-# .. note:: handler is not used to simplify it
-- name: Ensure www server system service is started
+# .. note:: handler is not used to simplify its implementation.
+- name: Ensure www server system service is started and enabled
   block:
     - name: Ensure www service system service is enabled and started
-      systemd:
+      ansible.builtin.systemd:
         name: "{{ sshe_httpd_service }}"
         state: started
         enabled: true
@@ -32,13 +25,14 @@
       register: __result
   rescue:
     - name: Try to dump the configuration updateded
-      debug:
+      ansible.builtin.debug:
         msg: |
-          {{ lookup('file', sshe_httpd_configs.0.path) }}
+          {{ lookup('file', item.path) }}
       changed_when: false
+      loop: "{{ sshe_httpd_configs }}"
 
     - name: Try to get the status of the service
-      command: >-
+      ansible.builtin.command: >-
         systemctl status {{ sshe_httpd_service }}
       ignore_errors: true
       changed_when: false
@@ -48,5 +42,3 @@
     - name: Print errors
       ansible.builtin.debug:
         var: __result
-
-# vim:sw=2:ts=2:et:

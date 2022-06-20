@@ -1,8 +1,6 @@
 ---
 - name: Ensure www server package is installed
-  package:
+  ansible.builtin.package:
     name: "{{ sshe_httpd_pkg }}"
     # .. note:: Avoid 'latest' because it may cause change.
     state: present
-
-# vim:sw=2:ts=2:et:
