@@ -3,8 +3,8 @@ dependency:
   name: galaxy
 lint: |
   set -e
-  yamllint -c molecule/docker/yamllint.cfg .
-  ansible-lint .
+  yamllint -c molecule/yamllint.cfg .
+  ansible-lint -c molecule/dot.ansible-lint .
 driver:
   name: docker
 # https://molecule.readthedocs.io/en/latest/examples.html#systemd-container
