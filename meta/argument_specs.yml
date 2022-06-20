@@ -1,0 +1,55 @@
+---
+argument_specs:
+  main:
+    short_description: Install and setup wwww server
+    description: Install and setup wwww server
+    author:
+      - Satoru SATOH
+    options:
+      os_family:
+        description: A string indicates Linux OS family
+        type: str
+        default: RedHat
+      sshe_verification_mode:
+        description: A boolean variable switches verification mode
+        type: bool
+        default: false
+      sshe_verification_pkgs:
+        description: Packages to install for verification (testing)
+        type: list
+        elements: str
+        default:
+          - nmap-ncat
+      sshe_httpd_pkg:
+        description: package name of www server software
+        type: str
+        default: httpd
+      sshe_httpd_service:
+        description: system service name of www server software
+        type: str
+        default: httpd
+      sshe_httpd_port:
+        description: listen port number of www server software
+        type: int
+        default: 80
+      sshe_httpd_configs:
+        description: list of configurations info
+        type: list
+        elements: dict
+        options:
+          path:
+            description: A configuration file path
+            type: str
+            required: true
+          block:
+            description: A block of configuration text
+            type: str
+            required: true
+          pattern:
+            description: A regex pattern to search to add a block of text
+            type: str
+            default: EOF
+          create:
+            description: True if the configuration file needs to be created
+            type: bool
+            default: false
