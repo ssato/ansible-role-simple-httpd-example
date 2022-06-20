@@ -1,0 +1,13 @@
+docker.io/pycontribs/centos:8
+n:
+coveralls
+flake8
+nose
+pycodestyle
+pylint
+
+# ansible:
+ansible-lint
+molecule
+molecule[docker]
+yamllint
