@@ -16,16 +16,14 @@ jobs:
   - job: Build
     strategy:
       matrix:
-        python36:
-          pythonVersion: 3.6
-        python37:
-          pythonVersion: 3.7
         python38:
           pythonVersion: 3.8
         python39:
           pythonVersion: 3.9
-        python36-ansible29:
-          pythonVersion: 3.6
+        python310:
+          pythonVersion: "3.10"
+        python38-ansible29:
+          pythonVersion: 3.8
           subVer: -ansible29
 
     pool:
@@ -42,7 +40,7 @@ jobs:
           versionSpec: $(pythonVersion)
 
       - script: |
-          sudo apt-get install -y bash bats iproute2 ansible-lint yamllint
+          sudo apt-get install -y ansible-lint yamllint
         displayName: Install test time dependencies
 
       - script: |
