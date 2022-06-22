@@ -30,11 +30,5 @@ provisioner:
   name: ansible
   options:
     vvv: true
-  inventory:
-    group_vars:
-      all:
-        sshe_verification_mode: false
 verifier:
   name: ansible
-
-# vim:sw=2:ts=2:et:
