@@ -10,7 +10,7 @@
     create: >-
       {{ item.create | d(false) }}
     insertafter: >-
-      {{ item.pattern | d('EOF') }}
+      {{ item.insertafter | d('EOF') }}
   loop: "{{ sshe_httpd_configs }}"
 
 # .. note:: handler is not used to simplify its implementation.

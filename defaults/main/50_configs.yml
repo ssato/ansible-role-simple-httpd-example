@@ -6,28 +6,13 @@ sshe_httpd_pkg: >-
 # www server's service name, same as the package name by default.
 sshe_httpd_service: "{{ sshe_httpd_pkg }}"
 
-# HTTP listening port of the wwww server
-sshe_httpd_port: 8080
-
 # www server's configuration files to modify or create.
 #
 # parameters:
 # - path: Configuration file path
 # - block: Block of configuration text
-# - pattern: Regex pattern to search to add block text after [EOF]
+# - insertafter: Regex pattern to search to add block text after [EOF]
 # - create: Create a new file if it does not exist [false]
 #
-sshe_httpd_configs:
-  - path: >-
-      {{ '/etc/httpd/conf/httpd.conf'
-         if os_family == 'RedHat'
-         else '/etc/apache2/sites-available/000-default.conf' }}
-
-    block: |
-      Listen {{ sshe_httpd_port }}
-      ServerName localhost:{{ sshe_httpd_port }}
-    pattern: ^#ServerName
-  - path: /etc/httpd/conf.d/50-custom.conf
-    block: |
-      # Placeholder file to add custom configurations.
-    create: true
+# .. seealso:: molecule/default/group_vars/all.yml
+sshe_httpd_configs: []

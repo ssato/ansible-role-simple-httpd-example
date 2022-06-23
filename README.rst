@@ -45,9 +45,7 @@ Variables may be customized as needed.
 
 - sshe_httpd_pkg: www server package name ['httpd' or 'apache2']
 - sshe_httpd_service: system service name of the www server [same as sshe_httpd_pkg]
-- sshe_httpd_port: HTTP Listening port
-- sshe_httpd_configs: A list of {'path':, 'pattern': } denotes configuration
-  file path and configuration string pattern to search
+- sshe_httpd_configs: A list of dicts denotes configurations
 
 Other variables should not needed to be customized for most cases.
 

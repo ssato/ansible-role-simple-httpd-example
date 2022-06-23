@@ -1,0 +1,23 @@
+---
+__httpd_port: 80
+
+sshe_httpd_configs:
+  - path: >-
+      {{ '/etc/httpd/conf/httpd.conf'
+         if os_family == 'RedHat'
+         else '/etc/apache2/sites-available/000-default.conf' }}
+
+    block: |
+      # Listen {{ __httpd_port }}
+      # ServerName localhost:{{ __httpd_port }}
+    insertafter: ^#ServerName
+
+  - path: /etc/httpd/conf.d/50-custom.conf
+    block: |
+      # Ansible managed: DO NOT EDIT THIS MANUALLY!
+      <Directory "/var/www/html/pub/">
+        AllowOverride FileInfo AuthConfig Limit Indexes
+        Options MultiViews Indexes SymLinksIfOwnerMatch IncludesNoExec
+        Require method GET POST OPTIONS
+      </Directory>
+    create: true

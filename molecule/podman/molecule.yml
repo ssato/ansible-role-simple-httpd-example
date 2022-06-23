@@ -23,7 +23,6 @@ platforms:
       - /tmp
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    # .. seealso:: sshe_httpd_port in defaults/main.yml
     published_ports:
       - 0.0.0.0:8080:80/tcp
 provisioner:
@@ -31,8 +30,10 @@ provisioner:
   options:
     vvv: true
   inventory:
-    group_vars:
-      all:
-        sshe_verification_mode: false
+    links:
+      group_vars: group_vars/
 verifier:
   name: ansible
+  inventory:
+    links:
+      group_vars: group_vars/

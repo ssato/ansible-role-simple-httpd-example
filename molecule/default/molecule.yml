@@ -18,7 +18,13 @@ provisioner:
   options:
     vv: true
     become: true
+  inventory:
+    links:
+      group_vars: group_vars/
 verifier:
   name: ansible
   options:
     become: true
+  inventory:
+    links:
+      group_vars: group_vars/

@@ -19,7 +19,7 @@
 
 - name: Test if a client can fetch a content
   ansible.builtin.uri:
-    url: "http://localhost:{{ sshe_httpd_port }}/"
+    url: "http://localhost/"
     return_content: true
     status_code:
       - 200

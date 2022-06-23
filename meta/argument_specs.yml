@@ -28,10 +28,6 @@ argument_specs:
         description: system service name of www server software
         type: str
         default: httpd
-      sshe_httpd_port:
-        description: listen port number of www server software
-        type: int
-        default: 80
       sshe_httpd_configs:
         description: list of configurations info
         type: list
@@ -45,8 +41,8 @@ argument_specs:
             description: A block of configuration text
             type: str
             required: true
-          pattern:
-            description: A regex pattern to search to add a block of text
+          insertafter:
+            description: A regex pattern to search to add a block of text after
             type: str
             default: EOF
           create:
