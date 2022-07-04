@@ -10,9 +10,10 @@ driver:
 # https://molecule.readthedocs.io/en/latest/examples.html#systemd-container
 platforms:
   - name: instance
-    # https://hub.docker.com/r/centos/systemd/
-    # image: centos/systemd:latest
-    image: docker.io/ssato/fedora-python-systemd:36
+    # Other alternatives:
+    #   - docker.io/ssato/fedora-python-systemd:36
+    #
+    image: docker.io/ssato079/centos-stream-python-systemd:8
     pre_build_image: true
     command: /sbin/init
     # capabilities:
