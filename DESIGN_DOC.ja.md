@@ -26,10 +26,11 @@
 - 変数はすべて defaults/ 下に定義
 - meta/argument_specs.yml を活用して role 変数の validation を行う
 - tasks/ に task 定義を分割定義
-  - main.yml: 他を ansible.builtin.import_tasks で import するのみ
-  - pre*.yml: 主に role 変数の validation を行う
-  - 
-- コードスタイルチェックやテストは molecule で行う
+  - main.yml: 他を ansible.builtin.include_tasks で include するのみ
+  - pre\*.yml: 主に role 変数の validation を行う
+  - test\*.yml: role 組み込みのテスト。フラグ変数 (sshe_verification_mode) の切替により実行を制御
+    - フラグ変数の代わりに tags 利用も検討したがインベントリデータで制御できるわかりやすさと実行のしやすさ、履歴の残りやすさを優先した
+- コードスタイルチェックやテストは molecule 経由で行う
 
 = Design and implementation details
 
