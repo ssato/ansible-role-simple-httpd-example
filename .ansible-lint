@@ -2,7 +2,4 @@
 exclude_paths:
   - ./azure-pipelines.yml
 skip_list:
-  - '106'  # Role name {} does not match ``^[a-z][a-z0-9_]+$`` pattern'
-  - '208'  # File permissions not mentioned'
-
-# vim:sw=2:ts=2:et:
+  - command-instead-of-module
