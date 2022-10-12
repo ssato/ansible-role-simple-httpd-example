@@ -35,7 +35,7 @@ provisioner:
     verify: ../default/verify.yml
   inventory:
     links:
-      group_vars: group_vars/
+      group_vars: ../default/group_vars/
 verifier:
   name: ansible
   inventory:
