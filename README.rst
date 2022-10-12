@@ -10,7 +10,7 @@ ssato.simple_httpd_example role
    :target: https://github.com/ssato/ansible-role-simple-httpd-example/actions?query=workflow%3ATests
    :alt: [GitHub Actions Status]
 
-.. image:: https://dev.azure.com/satorusatoh0471/ansible-role-simple-httpd-example/_apis/build/status/ssato.ansible-role-simple-httpd-example?branchName=master
+.. image:: https://dev.azure.com/satorusatoh0471/ansible-role-simple-httpd-example/_apis/build/status/ssato.ansible-role-simple-httpd-example?branchName=next
    :target: https://dev.azure.com/satorusatoh0471/ansible-role-simple-httpd-example/_build/latest?definitionId=1
    :alt: [Azure Pipelines Status]
 
