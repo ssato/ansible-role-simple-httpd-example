@@ -2,47 +2,26 @@
 - name: Test variables are OK
   ansible.builtin.assert:
     that:
-      - sshe_verification_mode is defined
-      - sshe_verification_mode in [true, false]
-      - sshe_httpd_pkg | d(false)
-      - sshe_httpd_pkg is string
-      - sshe_httpd_service | d(false)
-      - sshe_httpd_service is string
-      - sshe_httpd_configs | d(false)
-      - sshe_httpd_configs is sequence
+      - sshe_httpd_pkg | length > 0
+      - sshe_httpd_service | length > 0
+      - sshe_verification_pkgs | select('==', '""') | length == 0
     fail_msg: |
-      sshe_verification_mode: {{ sshe_verification_mode | d() }}
-      sshe_httpd_pkg: {{ sshe_httpd_pkg | d() }}
-      sshe_httpd_service: {{ sshe_httpd_service | d() }}
-      sshe_httpd_configs: {{ sshe_httpd_configs | d() | to_nice_json }}
+      sshe_httpd_pkg: {{ sshe_httpd_pkg }}
+      sshe_httpd_service: {{ sshe_httpd_service }}
+      sshe_verification_pkgs: {{ sshe_verification_pkgs | to_nice_json }}
 
-- name: Test if the OS running in the target is supported one
-  ansible.builtin.assert:
-    that:
-      - os_family in ['RedHat', 'Debian']
-    fail_msg: |
-      os_family: {{ os_family }}
-
-- name: Test other complex parameters
+- name: Test other complex checks for variables
   block:
-    - name: Compute the length of the variable, 'sshe_httpd_configs'
-      ansible.builtin.set_fact:
-        _len_shcs: >-
-          {{ sshe_httpd_configs | length }}
-
     - name: Test the variable 'sshe_httpd_configs' has expected values
       ansible.builtin.assert:
         that:
           - >-
-            {{ sshe_httpd_configs | selectattr('path')
-                                  | list
-                                  | length == _len_shcs | int }}
+            sshe_httpd_configs | selectattr('path', '==', '""')
+                               | length == 0
           - >-
-            {{ sshe_httpd_configs | selectattr('path', 'string')
-                                  | list
-                                  | length == _len_shcs | int }}
+            sshe_httpd_configs | selectattr('block', '==', '""')
+                               | length == 0
         fail_msg: |
-          _len_shcs: {{ _len_shcs }}
-          sshe_httpd_configs: {{ sshe_httpd_configs | d() | to_nice_json }}
+          sshe_httpd_configs: {{ sshe_httpd_configs | to_nice_json }}
       when:
-        - _len_shcs | int > 0
+        - sshe_httpd_configs | length > 0

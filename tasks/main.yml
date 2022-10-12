@@ -1,6 +1,12 @@
 ---
+- name: Pre checks for ansible < 2.11.0
+  ansible.builtin.include_tasks: pre_for_legacy_ansible_versions.yml
+  when:
+    - ansible_version.full is version('2.11', '<')
+
 - name: Pre checks
   ansible.builtin.include_tasks: pre.yml
+
 - name: Main tasks
   block:
     - name: Install required software
