@@ -21,7 +21,6 @@ ssato.simple_httpd_example role
 An ansible role to show how to do Ansible Role CI using the following tools.
 
 - molecule (https://molecule.readthedocs.io), a de facto test framework for ansible, with ansible as a molecule's verifier
-- bats (https://github.com/sstephenson/bats) to run a kind of integration tests
 - tox (https://tox.readthedocs.io) to run these commands in various environments
 
 Requirements
@@ -51,12 +50,12 @@ Other variables should not needed to be customized for most cases.
 
 - os_family: (Linux) OS family name [ansible_os_family or 'RedHat']
 
-see also defaults/main.yml for default definitions of each variables and tests/files/\*_evars_\*.yml for .
+see also defaults/main/\*.yml for default definitions of each variables and tests/files/\*_evars_\*.yml for .
 
 Example Playbook
 ==================
 
-see tests/converge.yml
+see molecule/default/converge.yml
 
 How to test this role
 ======================
