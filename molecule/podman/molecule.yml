@@ -30,6 +30,9 @@ provisioner:
   name: ansible
   options:
     vvv: true
+  playbooks:
+    converge: ../default/converge.yml
+    verify: ../default/verify.yml
   inventory:
     links:
       group_vars: group_vars/
