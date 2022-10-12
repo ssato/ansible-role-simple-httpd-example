@@ -1,4 +1,6 @@
 ---
+# yamllint disable-line rule:line-length
+# .. seealso:: https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html#role-argument-validation
 argument_specs:
   main:
     short_description: Install and setup wwww server
@@ -10,6 +12,9 @@ argument_specs:
         description: A string indicates Linux OS family
         type: str
         default: RedHat
+        choices:
+          - RedHat
+          - Debian
       sshe_verification_mode:
         description: A boolean variable switches verification mode
         type: bool
@@ -32,6 +37,7 @@ argument_specs:
         description: list of configurations info
         type: list
         elements: dict
+        required: false
         options:
           path:
             description: A configuration file path
